@@ -1,5 +1,11 @@
-apply plugin: 'com.android.library'
+if (is_module.toBoolean())
+    apply plugin: 'com.android.library'
+else
+    apply plugin: 'com.android.application'
 
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 26
 
@@ -24,7 +30,11 @@ android {
 
     sourceSets {
         main {
-
+            if (is_module.toBoolean()) {
+                manifest.srcFile 'src/main/release/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+            }
         }
     }
 
@@ -33,8 +43,13 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    compile project(':BaseLibrary')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    compile project(':Provider')
 }
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
