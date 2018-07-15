@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
 
 android {
     compileSdkVersion 26
@@ -34,4 +36,7 @@ dependencies {
     compile "org.jetbrains.anko:anko-commons:$anko_version"
     compile "org.jetbrains.anko:anko-appcompat-v7-commons:$anko_version"
     compile "org.jetbrains.anko:anko-support-v4-commons:$anko_version"
+
+    compile "io.reactivex:rxkotlin:$rx_kotlin_version"
+    compile "io.reactivex:rxandroid:$rx_android_version"
 }

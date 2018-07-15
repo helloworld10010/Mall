@@ -1,19 +1,30 @@
 package com.practice.usercenter
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.practice.baselibrary.ui.activity.BaseMvpActivity
+import com.practice.usercenter.presenter.RegisterPresenter
+import com.practice.usercenter.presenter.view.RegisterView
 import kotlinx.android.synthetic.main.activity_register.*
 import org.jetbrains.anko.toast
 
-class RegisterActivity : AppCompatActivity() {
+class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
+
+    override fun registerResult(status: Boolean?) {
+        status?.let {
+            toast(status.toString())
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        mRegister.setOnClickListener {
-            toast("你好啊，我来自anko")
-        }
+        // 在view中调用业务逻辑(presenter)
+        mPresenter = RegisterPresenter()
+        mPresenter.mView = this
 
+        mRegister.setOnClickListener {
+            mPresenter.register("","","")
+        }
     }
 }
