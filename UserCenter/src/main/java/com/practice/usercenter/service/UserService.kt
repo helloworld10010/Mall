@@ -1,4 +1,4 @@
-package com.practice.usercenter.presenter.service
+package com.practice.usercenter.service
 
 import rx.Observable
 
