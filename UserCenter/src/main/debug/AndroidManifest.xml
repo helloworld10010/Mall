@@ -3,6 +3,7 @@
     package="com.practice.usercenter">
 
     <application
+        android:name="com.practice.baselibrary.comon.BaseApplication"
         android:theme="@style/AppTheme">
         <activity android:name=".RegisterActivity">
             <intent-filter>

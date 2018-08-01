@@ -1,6 +1,8 @@
 package com.practice.baselibrary.presenter
 
 import com.practice.baselibrary.presenter.view.BaseView
+import com.trello.rxlifecycle.LifecycleProvider
+import javax.inject.Inject
 
 /**
  * Created by link on 18-7-14.
@@ -8,4 +10,6 @@ import com.practice.baselibrary.presenter.view.BaseView
  */
 open class BasePresenter<T:BaseView> {
     lateinit var mView:T
+    @Inject
+    lateinit var mLifecycle:LifecycleProvider<*>
 }

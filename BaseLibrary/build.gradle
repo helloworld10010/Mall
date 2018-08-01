@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 
 android {
@@ -46,4 +47,13 @@ dependencies {
     compile "com.squareup.okhttp3:logging-interceptor:${ok_http_version}"
     compile "com.squareup.retrofit2:converter-gson:${retrofit_version}"
     compile "com.squareup.retrofit2:adapter-rxjava:${retrofit_version}"
+
+    // dagger2
+    compile "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+
+    // rxlifecycle
+    compile "com.trello:rxlifecycle-kotlin:$rx_lifecycle_version"
+    compile "com.trello:rxlifecycle-components:$rx_lifecycle_version"
+
 }
